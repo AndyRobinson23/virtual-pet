@@ -55,12 +55,32 @@ describe('walk', () => {
         expect(pet.fitness).toEqual(8);
     });
 
-    it('increases fitness by to a maximum of 10', () => {
+    it('increases fitness to a maximum of 10', () => {
         const pet = new Pet('fido');
 
         pet.fitness = 8;
         pet.walk();
 
         expect(pet.fitness).toEqual(10);
+    });
+});
+
+describe('feed', () => {
+    it('decreases hunger by 3', () => {
+        const pet = new Pet('fido');
+
+        pet.hunger = 3;
+        pet.feed();
+
+        expect(pet.hunger).toEqual(0);
+    });
+
+    it('decreases hunger to a minimum of 0', () => {
+        const pet = new Pet('fido');
+
+        pet.hunger = 2;
+        pet.feed();
+
+        expect(pet.hunger).toEqual(0);
     });
 });
