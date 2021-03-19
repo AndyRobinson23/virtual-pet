@@ -30,4 +30,16 @@ Pet.prototype.feed = function () {
     }
 }
 
+Pet.prototype.checkUp = function () {
+    if (this.hunger >= 5 && this.fitness <= 3) {
+        return 'I am hungry AND I need a walk';
+    } else if (this.hunger >= 5) {
+        return 'I am hungry';
+    } else if (this.fitness <= 3) {
+        return 'I need a walk';
+    } else {
+        return 'I feel great!';
+    }
+}
+
 module.exports = Pet;
