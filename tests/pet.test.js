@@ -45,6 +45,32 @@ describe('constructor', () => {
     });
 });
 
+describe('growUp', () => {
+    it('throws an error if the pet is not alive due to being too old', () => {
+        const pet = new Pet('Fido');
+
+        pet.age = 30;
+
+        expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+    });
+
+    it('throws an error if the pet is not alive due to hunger', () => {
+        const pet = new Pet('Fido');
+
+        pet.hunger = 11;
+
+        expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+    });
+
+    it('throws an error if the pet is not alive due to fitness', () => {
+        const pet = new Pet('Fido');
+
+        pet.fitness = 0;
+
+        expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+    });
+});
+
 describe('walk', () => {
     it('increases fitness by 4', () => {
         const pet = new Pet('fido');
@@ -62,6 +88,14 @@ describe('walk', () => {
         pet.walk();
 
         expect(pet.fitness).toEqual(10);
+    });
+
+    it('throws an error if the pet is not alive', () => {
+        const pet = new Pet('Fido');
+
+        pet.fitness = 0;
+
+        expect(() => pet.walk()).toThrow('Your pet is no longer alive :(');
     });
 });
 
@@ -82,6 +116,14 @@ describe('feed', () => {
         pet.feed();
 
         expect(pet.hunger).toEqual(0);
+    });
+
+    it('throws an error if the pet is not alive', () => {
+        const pet = new Pet('Fido');
+
+        pet.age = 30;
+
+        expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
     });
 });
 
@@ -122,6 +164,22 @@ describe('checkUp', () => {
         pet.checkUp();
 
         expect(pet.checkUp()).toBe('I feel great!');
+    });
+
+    it('throws an error if the pet is not alive due to hunger', () => {
+        const pet = new Pet('Fido');
+
+        pet.hunger = 11;
+
+        expect(() => pet.checkUp()).toThrow('Your pet is no longer alive :(');
+    });
+
+    it('throws an error if the pet is not alive due to fitness', () => {
+        const pet = new Pet('Fido');
+
+        pet.fitness = 0;
+
+        expect(() => pet.checkUp()).toThrow('Your pet is no longer alive :(');
     });
 
 });
