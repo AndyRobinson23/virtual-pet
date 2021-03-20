@@ -183,3 +183,14 @@ describe('checkUp', () => {
     });
 
 });
+
+describe('adoptChild', () => {
+    it('adds child element to parents children array', () => {
+        const parent = new Pet('Father');
+        const child = new Pet('Son');
+
+        parent.adoptChild(child)
+
+        expect(parent.children).toStrictEqual([child]);
+    })
+});
